@@ -13,23 +13,38 @@ class ApplicationController < ActionController::Base
 
 
   def payment_results
-    @apr = params.fetch("apr")
-    @num_years = params.fetch("num_years")
-    @principal = params.fetch("principal")
+    @apr = params.fetch("apr").to_f
+    @num_years = params.fetch("num_years").to_f
+    @principal = params.fetch("principal").to_f
+    
+    @n = @num_years * -12
+    # @apr = apr
+    @r = @apr / 100.0 / 12
 
-    n = @num_years.to_i * 12
-    apr = apr.to_f / 100
-    r = apr / 12
+    @numerator = @r * @principal
 
-    numerator = r * @principal.to_f
-    denominator = 1 -(1 + r)**(-n)
+    @denominator = 1 -(1 + @r)**(@n)
 
-   @monthly_payment = (numerator / denominator)
+   @monthly_payment = (@numerator / @denominator)
+   @apr = sprintf("%0.04f",@apr)
     render({ :template => "calculation_templates/payment_results.html.erb"})
   end
   def payment_calculation
   # payment form build goes here.
-   
+  #   @apr = params.fetch("apr").to_f
+  #   @num_years = params.fetch("num_years").to_f
+  #   @principal = params.fetch("principal").to_f
+    
+  #   n = @num_years.to_f * 12
+  #   apr = apr.to_f / 100
+  #   @r = apr.to_f / 12
+
+  #   @numerator = @r * @principal.to_f
+    
+  #   @denominator = 1 -(1 + @r)**(-n)
+
+  #  @monthly_payment = (@numerator / @denominator)
+    # render({ :template => "calculation_templates/payment_results.html.erb"})
 
    render({ :template => "calculation_templates/payment_new.html.erb"})
   end
