@@ -9,8 +9,10 @@ get("/random/results", { :controller => "application", :action => "calculate_ran
 get("/random/new", { :controller => "application", :action => "random_form"})
 
 get("/square_root/new", { :controller => "application", :action => "square_root_form"})
-get("/square_root/results", { :controller => "application", :action => "square_root_results" })
-# get("/payment/new", { :controller => "application", :action => })
-end
 
-# get("/payment/results", { :controller => "appliction", :action => })
+get("/square_root/results", { :controller => "application", :action => "square_root_results" })
+
+get("/payment/new", { :controller => "application", :action => "payment_calculation" })
+
+get("/payment/results", { :controller => "appliction", :action => "payment_results"})
+end
