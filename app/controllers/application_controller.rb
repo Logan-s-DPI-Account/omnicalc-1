@@ -38,4 +38,14 @@ class ApplicationController < ActionController::Base
 
     render({ :template => "calculation_templates/random_new.html.erb"})
   end
+
+  def square_root_form
+    render({ :template => "calculation_templates/square_root_new.html.erb"})
+    @num = params.fetch("user_num")
+  end
+
+  def square_root_results
+    render({ :template => "calculation_templates/square_root_results.html.erb"})
+    @num = params.fetch("user_num")
+  end
 end

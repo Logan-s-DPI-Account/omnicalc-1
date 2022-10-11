@@ -8,6 +8,8 @@ get("/random/results", { :controller => "application", :action => "calculate_ran
 
 get("/random/new", { :controller => "application", :action => "random_form"})
 
+get("/square_root/new", { :controller => "application", :action => "square_root_form"})
+get("/square_root/results", { :controller => "application", :action => "square_root_results" })
 # get("/payment/new", { :controller => "application", :action => })
 end
 
