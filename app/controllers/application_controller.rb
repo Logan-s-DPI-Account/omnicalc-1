@@ -11,24 +11,25 @@ class ApplicationController < ActionController::Base
     render({ :template => "calculation_templates/square_results.html.erb"})
   end
 
-  
+
   def payment_results
+    @apr = params.fetch("apr")
+    @num_years = params.fetch("num_years")
+    @principal = params.fetch("principal")
+
+    n = @num_years.to_i * 12
+    apr = apr.to_f / 100
+    r = apr / 12
+
+    numerator = r * @principal.to_f
+    denominator = 1 -(1 + r)**(-n)
+
+   @monthly_payment = (numerator / denominator)
     render({ :template => "calculation_templates/payment_results.html.erb"})
   end
   def payment_calculation
-  #payment form build goes here.
-  #   apr = params.fetch("apr")
-  #   number_of_years = params.fetch("number_of_years")
-  #   principal = params.fetch("principal")
-
-  #   n = number_of_years.to_i * 12
-  #   apr = apr.to_f / 100
-  #   r = apr / 12
-
-  #   numerator = r * principal.to_f
-  #   denominator = 1 -(1 + r)**(-n)
-
-  #  @monthly_payment = numerator / denominator
+  # payment form build goes here.
+   
 
    render({ :template => "calculation_templates/payment_new.html.erb"})
   end
