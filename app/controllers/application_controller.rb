@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
 
    @monthly_payment = numerator / denominator
 
-   render({ :template})
+   render({ :template => "calculation_templates/payment_new"})
   end
 
   def calculate_random
