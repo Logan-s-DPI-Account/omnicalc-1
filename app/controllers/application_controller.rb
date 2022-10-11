@@ -10,10 +10,13 @@ class ApplicationController < ActionController::Base
     @square_of_num = @num ** 2
     render({ :template => "calculation_templates/square_results.html.erb"})
   end
-  def payment_form
-    render({ :template => "calculation_templates/payment_new.html.erb"})
+
+  
+  def payment_results
+    render({ :template => "calculation_templates/payment_results.html.erb"})
   end
   def payment_calculation
+  #payment form build goes here.
   #   apr = params.fetch("apr")
   #   number_of_years = params.fetch("number_of_years")
   #   principal = params.fetch("principal")

@@ -14,5 +14,5 @@ get("/square_root/results", { :controller => "application", :action => "square_r
 
 get("/payment/new", { :controller => "application", :action => "payment_calculation" })
 
-get("/payment/results", { :controller => "appliction", :action => "payment_results"})
+get("/payment/results", { :controller => "application", :action => "payment_results"})
 end
